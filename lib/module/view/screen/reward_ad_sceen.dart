@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application_1/core/ad_helper.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 
+import 'banner_ad_screen.dart';
+
 class RewardAdmob extends StatefulWidget {
   const RewardAdmob({Key? key}) : super(key: key);
 
@@ -52,21 +54,28 @@ class _RewardAdmobState extends State<RewardAdmob> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Colors.indigo,
         title: const Text("Reward Ad"),
         centerTitle: true,
+        // automaticallyImplyLeading: false,
+        // leading: IconButton(
+        //   icon: const Icon(Icons.arrow_back_ios),
+        //   onPressed: () {
+        //     _rewardedAd.show(onUserEarnedReward: (ad, reward) {});
+        //   },
+        // ),
       ),
       body: Center(
         child: InkWell(
           onTap: () {
-            // _showRewardedAd();
             _rewardedAd.show(onUserEarnedReward: (ad, reward) {});
           },
           child: Container(
-            color: Colors.black54,
+            color: Colors.indigo,
             child: const Padding(
               padding: EdgeInsets.all(15),
               child: Text(
-                " Reward AD ",
+                " TAP HERE FOR\n     Reward AD ",
                 style: TextStyle(fontSize: 25, color: Colors.white),
               ),
             ),

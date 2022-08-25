@@ -13,8 +13,6 @@ class AdInterstitial extends StatefulWidget {
 class _AdInterstitialState extends State<AdInterstitial> {
   InterstitialAd? _interstitialAd;
 
-  bool _isInterstitialAdReady = false;
-
   @override
   void initState() {
     super.initState();
@@ -70,6 +68,7 @@ class _AdInterstitialState extends State<AdInterstitial> {
         title: const Text('Interstitial Ad'),
       ),
       floatingActionButton: FloatingActionButton(
+        backgroundColor: Colors.teal,
         onPressed: () {
           Navigator.push(
             context,
@@ -78,6 +77,7 @@ class _AdInterstitialState extends State<AdInterstitial> {
             ),
           );
         },
+        child: const Icon(Icons.add_box),
       ),
       body: Center(
         child: InkWell(
@@ -85,11 +85,11 @@ class _AdInterstitialState extends State<AdInterstitial> {
             _showInterstitialAd();
           },
           child: Container(
-            color: Colors.black54,
+            color: Colors.teal,
             child: const Padding(
               padding: EdgeInsets.all(15),
               child: Text(
-                " Interstitial AD ",
+                " TAP HERE FOR\n  Interstitial AD ",
                 style: TextStyle(fontSize: 25, color: Colors.white),
               ),
             ),
