@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application_1/core/ad_helper.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 
-import 'banner_ad_screen.dart';
-
 class RewardAdmob extends StatefulWidget {
   const RewardAdmob({Key? key}) : super(key: key);
 
@@ -75,7 +73,7 @@ class _RewardAdmobState extends State<RewardAdmob> {
             child: const Padding(
               padding: EdgeInsets.all(15),
               child: Text(
-                " TAP HERE FOR\n     Reward AD ",
+                " TAP HERE FOR Reward AD ",
                 style: TextStyle(fontSize: 25, color: Colors.white),
               ),
             ),

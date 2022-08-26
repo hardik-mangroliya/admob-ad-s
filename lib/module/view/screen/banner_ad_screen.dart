@@ -54,7 +54,6 @@ class _AdBannerState extends State<AdBanner> {
       floatingActionButton: Padding(
         padding: const EdgeInsets.only(left: 40, right: 0),
         child: Row(
-          // mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             InkWell(
               onTap: () {

@@ -89,7 +89,7 @@ class _AdInterstitialState extends State<AdInterstitial> {
             child: const Padding(
               padding: EdgeInsets.all(15),
               child: Text(
-                " TAP HERE FOR\n  Interstitial AD ",
+                " TAP HERE FOR Interstitial Ad ",
                 style: TextStyle(fontSize: 25, color: Colors.white),
               ),
             ),
