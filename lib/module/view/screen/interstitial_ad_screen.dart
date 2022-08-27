@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/core/ad_helper.dart';
+import 'package:flutter_application_1/core/functions/ad_functions.dart';
 import 'package:flutter_application_1/module/view/screen/reward_ad_sceen.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 
@@ -16,48 +16,7 @@ class _AdInterstitialState extends State<AdInterstitial> {
   @override
   void initState() {
     super.initState();
-    _loadInterstitialAd();
-  }
-
-  Future<void> _loadInterstitialAd() async {
-    await InterstitialAd.load(
-      adUnitId: AdHelper.interstitialAdUnitId,
-      request: const AdRequest(),
-      adLoadCallback: InterstitialAdLoadCallback(
-        onAdLoaded: (InterstitialAd ad) {
-          print('$ad loaded');
-          _interstitialAd = ad;
-          _interstitialAd!.setImmersiveMode(true);
-        },
-        onAdFailedToLoad: (LoadAdError error) {
-          print('InterstialAd failed to show: $error.');
-          _interstitialAd = null;
-        },
-      ),
-    );
-  }
-
-  void _showInterstitialAd() {
-    if (_interstitialAd == null) {
-      print('Warning: attempt to show interstitial before loaded.');
-      return;
-    }
-    _interstitialAd!.fullScreenContentCallback = FullScreenContentCallback(
-      onAdShowedFullScreenContent: (InterstitialAd ad) =>
-          print('ad onAdShowedFullScreenContent.'),
-      onAdDismissedFullScreenContent: (InterstitialAd ad) {
-        print('$ad onAdDismissedFullScreenContent.');
-        ad.dispose();
-        _loadInterstitialAd();
-      },
-      onAdFailedToShowFullScreenContent: (InterstitialAd ad, AdError error) {
-        print('$ad onAdFailedToShowFullScreenContent: $error');
-        ad.dispose();
-        _loadInterstitialAd();
-      },
-    );
-    _interstitialAd!.show();
-    _interstitialAd = null;
+    AdFunctions.loadInterstitialAd();
   }
 
   @override
@@ -82,7 +41,7 @@ class _AdInterstitialState extends State<AdInterstitial> {
       body: Center(
         child: InkWell(
           onTap: () {
-            _showInterstitialAd();
+            AdFunctions.showInterstitialAd();
           },
           child: Container(
             color: Colors.teal,

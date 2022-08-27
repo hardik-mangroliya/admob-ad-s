@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/main.dart';
+import 'package:flutter_application_1/core/functions/ad_functions.dart';
 import 'package:flutter_application_1/module/view/screen/interstitial_ad_screen.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
-import '../../../core/ad_helper.dart';
+import '../../../core/ad_string_constant.dart';
 
 class AdBanner extends StatefulWidget {
   const AdBanner({Key? key}) : super(key: key);
@@ -19,7 +19,7 @@ class _AdBannerState extends State<AdBanner> {
   void initState() {
     _bannerAd = BannerAd(
       size: AdSize.banner,
-      adUnitId: AdHelper.bannerAdUnitId,
+      adUnitId: AdStringConstant.bannerAdUnitId,
       listener: BannerAdListener(
         onAdLoaded: (_) {
           setState(() {
@@ -57,26 +57,34 @@ class _AdBannerState extends State<AdBanner> {
           children: [
             InkWell(
               onTap: () {
-                loadAd();
+                AdFunctions.loadAd();
               },
               child: Container(
                 width: 80,
                 height: 50,
-                color: Colors.blue[100],
-                child: const Center(child: Text("Load AD")),
+                color: const Color.fromARGB(255, 158, 143, 10),
+                child: const Center(
+                    child: Text(
+                  "Load AD",
+                  style: TextStyle(color: Colors.white),
+                )),
               ),
             ),
             const SizedBox(
               width: 225,
             ),
             FloatingActionButton(
+              backgroundColor: Colors.blue[300],
               onPressed: () {
                 Navigator.push(
                     context,
                     MaterialPageRoute(
                         builder: (context) => const AdInterstitial()));
               },
-              child: const Icon(Icons.add),
+              child: const Icon(
+                Icons.add,
+                color: Colors.black,
+              ),
             ),
           ],
         ),

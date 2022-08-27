@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/core/ad_helper.dart';
+import 'package:flutter_application_1/core/ad_string_constant.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 
 class RewardAdmob extends StatefulWidget {
@@ -17,7 +17,7 @@ class _RewardAdmobState extends State<RewardAdmob> {
   void initState() {
     super.initState();
     RewardedAd.load(
-      adUnitId: AdHelper.rewardedAdUnitId,
+      adUnitId: AdStringConstant.rewardedAdUnitId,
       request: const AdRequest(),
       rewardedAdLoadCallback: RewardedAdLoadCallback(
         onAdLoaded: (ad) {
