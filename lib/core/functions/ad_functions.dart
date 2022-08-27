@@ -1,5 +1,4 @@
 import 'package:google_mobile_ads/google_mobile_ads.dart';
-
 import '../ad_string_constant.dart';
 
 abstract class AdFunctions {
@@ -7,13 +6,6 @@ abstract class AdFunctions {
   static AppOpenAd? openAd;
 
   static Future<void> loadAd() async {
-    // print('Started at ${DateTime.now()}');
-    // final time = await Future.delayed(
-    //   const Duration(seconds: 10),
-    //   () async {},
-    // ).then((value) => DateTime.now());
-    // print('Awaited time was at $time');
-    // ----------------------------------------
     await AppOpenAd.load(
         adUnitId: 'ca-app-pub-3940256099942544/3419835294',
         request: const AdRequest(),

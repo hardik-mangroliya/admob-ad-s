@@ -1,27 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/module/view/screen/banner_ad_screen.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
-
 import 'core/functions/ad_functions.dart';
 
 void main() async {
-  // Future.delayed(const Duration(seconds: 50), () {
-  //   print("Executed after 10 seconds");
-  // });
-
   WidgetsFlutterBinding.ensureInitialized();
   await MobileAds.instance.initialize();
-  // ---------------------------------------------
-  print('Started at ${DateTime.now()}');
-  final time = await Future.delayed(
-    const Duration(seconds: 10),
-    () async {},
-  ).then((value) => DateTime.now());
-  print('Awaited time was at $time');
-  // --------------------------------------
 
-  await AdFunctions.loadAd();
-  runApp(MyApp());
+  if (AdFunctions.loadAd == Duration(seconds: 0)) {
+    AdFunctions.loadAd();
+    runApp(MyApp());
+  } else {
+    runApp(MyApp());
+    print('Started at ${DateTime.now()}');
+    final time = await Future.delayed(
+      const Duration(seconds: 10),
+      () async {},
+    ).then((value) => DateTime.now());
+    print('Awaited time was at $time');
+    AdFunctions.loadAd();
+  }
 }
 
 class MyApp extends StatelessWidget {
