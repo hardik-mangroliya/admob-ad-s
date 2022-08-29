@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'dart:async';
 import 'package:flutter_application_1/module/view/screen/banner_ad_screen.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'core/functions/ad_functions.dart';
@@ -25,9 +26,40 @@ void main() async {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: AdBanner(),
+    return MaterialApp(debugShowCheckedModeBanner: false, home: SplashScreen());
+  }
+}
+
+class SplashScreen extends StatefulWidget {
+  @override
+  State<StatefulWidget> createState() {
+    return SplashScreenState();
+  }
+}
+
+class SplashScreenState extends State<SplashScreen> {
+  @override
+  void initState() {
+    super.initState();
+    Future.delayed(const Duration(seconds: 3), () {
+      Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => const AdBanner(),
+          ));
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return const Scaffold(
+      backgroundColor: Colors.teal,
+      body: Center(
+        child: Text(
+          'Splash Screen!',
+          style: TextStyle(fontSize: 30, color: Colors.white),
+        ),
+      ),
     );
   }
 }
